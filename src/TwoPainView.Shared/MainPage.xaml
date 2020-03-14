@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="TwoPainView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TwoPainView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Green">
+        <!-- Issue #1: In Tall mode scroll bars appear for each panel in Uno implementation of TwoPaneView (i.e. on Surface Duo) but not
+             in the WinUI implementation of the TwoPaneView (i.e. on Surface Neo). The Uno implementation needs to match the WinUI 
+             implementation -->
+        <!--<TwoPaneView Pane1Length="0.5*" Pane2Length="0.5*" Background="Yellow" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinTallModeHeight="100" MinWideModeWidth="10000">
+            <TwoPaneView.Pane1>
+                <Border>
+                    <Image Source="ms-appx:///Assets/Neo.jpg" Stretch="None" />
+                </Border>
+            </TwoPaneView.Pane1>
+            <TwoPaneView.Pane2>
+                <Border>
+                    <Image Source="ms-appx:///Assets/Duo.jpg" Stretch="None" />
+                </Border>
+            </TwoPaneView.Pane2>
+        </TwoPaneView>-->
+        <!-- Issue #2: In Wide mode when spanned across multiple screens, the Uno implementation of TwoPaneView (i.e. on Surface Duo)
+             applies proportional sizing to the panels resulting in Panel2 being split across screens. The WinUI implementation of the
+             TwoPaneView (i.e. on Surface Neo) however forces each pane to be aligned to each display. The Uno implementation needs to
+             match the WinUI implementation -->
+        <TwoPaneView Pane1Length="0.3*" Pane2Length="0.7*" Background="Yellow" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWideModeWidth="100">
+            <TwoPaneView.Pane1>
+                <Border>
+                    <Rectangle Fill="LightBlue" />
+                </Border>
+            </TwoPaneView.Pane1>
+            <TwoPaneView.Pane2>
+                <Border>
+                    <Rectangle Fill="LightGreen"/>
+                </Border>
+            </TwoPaneView.Pane2>
+        </TwoPaneView>
+    </Grid>
+</Page>
